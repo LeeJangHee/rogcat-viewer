@@ -1,8 +1,9 @@
 use dioxus::prelude::*;
+use rogcat_viewer::ui::{device_screen::DeviceScreen, filter_screen::FilterScreen};
+use rogcat_viewer::utils::str_util::map_to;
 
 const FAVICON: Asset = asset!("/assets/favicon.ico");
 const MAIN_CSS: Asset = asset!("/assets/main.css");
-const HEADER_SVG: Asset = asset!("/assets/header.svg");
 
 fn main() {
     dioxus::launch(App);
@@ -13,24 +14,18 @@ fn App() -> Element {
     rsx! {
         document::Link { rel: "icon", href: FAVICON }
         document::Link { rel: "stylesheet", href: MAIN_CSS }
-        Hero {}
+        div { display: "flex", gap: "10px",
+            DeviceScreen {}
+            div { width: "80%",
+                FilterScreen {
+                    group: String::from("word"),
+                    titles: map_to(vec!["find", "remove"]),
+                }
 
-    }
-}
-
-#[component]
-pub fn Hero() -> Element {
-    rsx! {
-        div {
-            id: "hero",
-            img { src: HEADER_SVG, id: "header" }
-            div { id: "links",
-                a { href: "https://dioxuslabs.com/learn/0.6/", "📚 Learn Dioxus" }
-                a { href: "https://dioxuslabs.com/awesome", "🚀 Awesome Dioxus" }
-                a { href: "https://github.com/dioxus-community/", "📡 Community Libraries" }
-                a { href: "https://github.com/DioxusLabs/sdk", "⚙️ Dioxus Development Kit" }
-                a { href: "https://marketplace.visualstudio.com/items?itemName=DioxusLabs.dioxus", "💫 VSCode Extension" }
-                a { href: "https://discord.gg/XgGxMSkvUM", "👋 Community Discord" }
+                FilterScreen {
+                    group: String::from("tag"),
+                    titles: map_to(vec!["pid", "tid", "show", "remove"]),
+                }
             }
         }
     }
