@@ -3,6 +3,11 @@
 # App (Project) Name
 name = "rogcat-viewer"
 
+# The Dioxus platform to default to
+default_platform = "web"
+
+asset_dir = "public"
+
 [web.app]
 
 # HTML title tag content

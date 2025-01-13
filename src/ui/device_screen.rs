@@ -10,7 +10,8 @@ pub fn DeviceScreen() -> Element {
         .collect();
 
     rsx! {
-        div { id: "device-screen", border: "2px solid #ffffff", width: "20%",
+        fieldset { id: "device-screen", width: "10%",
+            legend { "Device Select" }
             button { id: "reset", onclick: move |_| info!("reset button clicked."), "reset" }
             for d in DUMMY_DEVICES {
                 pre { "{d}" }

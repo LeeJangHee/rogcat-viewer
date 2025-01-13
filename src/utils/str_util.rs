@@ -8,6 +8,6 @@ pub fn capitalize(input: &String) -> String {
     }
 }
 
-pub fn map_to(vec: Vec<&str>) -> Vec<String> {
+pub fn map_to(vec: Vec<&'static str>) -> Vec<String> {
     vec.iter().map(|&s| s.to_string()).collect()
 }

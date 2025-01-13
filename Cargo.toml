@@ -10,8 +10,12 @@ rust-version = "1.79.0"
 [dependencies]
 dioxus = { version = "0.6.0", features = [] }
 
+# log library
 tracing = "0.1"
 tracing-subscriber = "0.3.0"
+
+# regex
+regex = "1.11.1"
 
 [features]
 default = ["web"]

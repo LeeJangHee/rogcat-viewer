@@ -1,8 +1,10 @@
 use dioxus::prelude::*;
-use rogcat_viewer::ui::{device_screen::DeviceScreen, filter_screen::FilterScreen};
+use rogcat_viewer::ui::{
+    adjust_log_screen::AdjustLogScreen, checkbox_fileter_screen::CheckboxFilterScreen,
+    device_screen::DeviceScreen, input_fileter_screen::InputFilterScreen,
+};
 use rogcat_viewer::utils::str_util::map_to;
 
-const FAVICON: Asset = asset!("/assets/favicon.ico");
 const MAIN_CSS: Asset = asset!("/assets/main.css");
 
 fn main() {
@@ -12,21 +14,39 @@ fn main() {
 #[component]
 fn App() -> Element {
     rsx! {
-        document::Link { rel: "icon", href: FAVICON }
         document::Link { rel: "stylesheet", href: MAIN_CSS }
         div { display: "flex", gap: "10px",
             DeviceScreen {}
-            div { width: "80%",
-                FilterScreen {
+            div { flex: 80,
+                InputFilterScreen {
                     group: String::from("word"),
                     titles: map_to(vec!["find", "remove"]),
                 }
 
-                FilterScreen {
+                InputFilterScreen {
                     group: String::from("tag"),
                     titles: map_to(vec!["pid", "tid", "show", "remove"]),
                 }
             }
+            div { flex: 20,
+                CheckboxFilterScreen {
+                    group: String::from("log"),
+                    titles: map_to(vec!["verbose", "debug", "info", "warn", "error", "fatal"]),
+                }
+
+                CheckboxFilterScreen {
+                    group: String::from("show-column"),
+                    titles: map_to(
+                        vec!["mark", "line", "date", "time", "level", "pid", "thread", "tag", "message"],
+                    ),
+                }
+
+                InputFilterScreen {
+                    group: String::from("highlight"),
+                    titles: map_to(vec!["highlight"]),
+                }
+            }
         }
+        AdjustLogScreen {}
     }
 }
