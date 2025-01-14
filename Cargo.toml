@@ -17,6 +17,8 @@ tracing-subscriber = "0.3.0"
 # regex
 regex = "1.11.1"
 
+utils = { path = "utils" }
+
 [features]
 default = ["web"]
 web = ["dioxus/web"]

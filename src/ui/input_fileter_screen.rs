@@ -1,7 +1,7 @@
 use dioxus::prelude::*;
 use tracing::info;
 
-use crate::utils::str_util::capitalize;
+use utils::capitalize;
 
 #[component]
 pub fn InputFilterScreen(group: String, titles: Vec<String>) -> Element {

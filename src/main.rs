@@ -3,7 +3,7 @@ use rogcat_viewer::ui::{
     adjust_log_screen::AdjustLogScreen, checkbox_fileter_screen::CheckboxFilterScreen,
     device_screen::DeviceScreen, input_fileter_screen::InputFilterScreen,
 };
-use rogcat_viewer::utils::str_util::map_to;
+use utils::map_to;
 
 const MAIN_CSS: Asset = asset!("/assets/main.css");
 
