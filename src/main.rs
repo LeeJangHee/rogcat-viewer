@@ -1,3 +1,4 @@
+use dioxus::desktop::{Config, WindowBuilder};
 use dioxus::prelude::*;
 use rogcat_viewer::ui::{
     adjust_log_screen::AdjustLogScreen, checkbox_fileter_screen::CheckboxFilterScreen,
@@ -5,16 +6,24 @@ use rogcat_viewer::ui::{
 };
 use utils::map_to;
 
-const MAIN_CSS: Asset = asset!("/assets/main.css");
+const BULMA_CSS: Asset = asset!("/assets/bulma/bulma.css");
 
 fn main() {
-    dioxus::launch(App);
+    dioxus::LaunchBuilder::desktop()
+        .with_cfg(
+            Config::new().with_window(
+                WindowBuilder::new()
+                    .with_resizable(true)
+                    .with_always_on_top(false),
+            ),
+        )
+        .launch(App);
 }
 
 #[component]
 fn App() -> Element {
     rsx! {
-        document::Link { rel: "stylesheet", href: MAIN_CSS }
+        document::Link { rel: "stylesheet", href: BULMA_CSS }
         div { display: "flex", gap: "10px",
             DeviceScreen {}
             div { flex: 80,

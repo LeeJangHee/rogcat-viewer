@@ -1,3 +1,5 @@
+#![allow(non_snake_case)]
+
 use dioxus::prelude::*;
 use tracing::{debug, info};
 
@@ -13,7 +15,6 @@ pub fn AdjustLogScreen() -> Element {
     }
 }
 
-#[warn(non_snake_case)]
 fn FontTypeScreen() -> Element {
     info!("FontTypeScreen is called.");
     let TEST_FONTS: Vec<String> = vec![1, 2, 3, 4]
@@ -31,7 +32,6 @@ fn FontTypeScreen() -> Element {
     }
 }
 
-#[warn(non_snake_case)]
 fn FontSizeScreen() -> Element {
     use regex::Regex;
 
@@ -58,7 +58,6 @@ fn FontSizeScreen() -> Element {
     }
 }
 
-#[warn(non_snake_case)]
 fn TextEncodeScreen() -> Element {
     info!("TextEncodeScreen is called.");
     rsx! {
@@ -69,7 +68,6 @@ fn TextEncodeScreen() -> Element {
     }
 }
 
-#[warn(non_snake_case)]
 fn GotoScreen() -> Element {
     info!("GotoScreen is called.");
     rsx! {
@@ -78,7 +76,6 @@ fn GotoScreen() -> Element {
     }
 }
 
-#[warn(non_snake_case)]
 fn CommandScreen() -> Element {
     info!("CommandScreen is called.");
     rsx! {
@@ -92,7 +89,6 @@ fn CommandScreen() -> Element {
     }
 }
 
-#[warn(non_snake_case)]
 fn ButtonScreen() -> Element {
     info!("ButtonScreen is called.");
     rsx! {

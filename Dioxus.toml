@@ -4,7 +4,7 @@
 name = "rogcat-viewer"
 
 # The Dioxus platform to default to
-default_platform = "web"
+default_platform = "desktop"
 
 asset_dir = "public"
 
