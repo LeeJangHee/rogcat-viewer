@@ -3,4 +3,5 @@ pub mod ui {
     pub mod checkbox_fileter_screen;
     pub mod device_screen;
     pub mod input_fileter_screen;
+    pub mod table_screen;
 }

@@ -3,6 +3,7 @@ use dioxus::prelude::*;
 use rogcat_viewer::ui::{
     adjust_log_screen::AdjustLogScreen, checkbox_fileter_screen::CheckboxFilterScreen,
     device_screen::DeviceScreen, input_fileter_screen::InputFilterScreen,
+    table_screen::TableScreen,
 };
 use utils::map_to;
 
@@ -57,5 +58,6 @@ fn App() -> Element {
             }
         }
         AdjustLogScreen {}
+        TableScreen {}
     }
 }

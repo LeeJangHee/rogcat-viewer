@@ -37,15 +37,16 @@ fn FontSizeScreen() -> Element {
 
     let re = Regex::new(r"[^\d]+$").unwrap();
     let mut font_size = use_signal(|| 12.to_string());
-    let on_font_size_click = move |_| {
+    let on_font_size_click = Box::new(move |_| {
         info!("font size click with {}", &font_size());
-    };
-    let font_size_listener = move |event: Event<FormData>| {
+    });
+
+    let font_size_listener = Box::new(move |event: Event<FormData>| {
         let value = event.value();
         let input_text = re.replace_all(value.trim(), "").to_string();
         debug!("after regex: {}", input_text);
         font_size.set(input_text);
-    };
+    });
 
     rsx! {
         label { "Font Size: " }

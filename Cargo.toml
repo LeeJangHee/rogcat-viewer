@@ -24,7 +24,6 @@ domain = { path = "domain" }
 default = ["desktop"]
 web = ["dioxus/web"]
 desktop = ["dioxus/desktop"]
-mobile = ["dioxus/mobile"]
 
 [profile]
 

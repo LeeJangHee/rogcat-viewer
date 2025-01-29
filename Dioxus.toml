@@ -6,12 +6,23 @@ name = "rogcat-viewer"
 # The Dioxus platform to default to
 default_platform = "desktop"
 
-asset_dir = "public"
+asset_dir = "asserts"
+
+# `build` & `serve` dist path
+out_dir = "dist"
 
 [web.app]
 
 # HTML title tag content
 title = "rogcat-viewer"
+
+[web.watcher]
+
+# when watcher trigger, regenerate the `index.html`
+reload_html = true
+
+# which files or dirs will be watcher monitoring
+watch_path = ["src", "assets"]
 
 # include `assets` in web platform
 [web.resource]
