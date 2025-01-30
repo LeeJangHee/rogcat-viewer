@@ -1,19 +1,15 @@
 use data::command::adb::Adb;
+use tracing::{debug, info};
 
-#[derive(Debug, Clone)]
-pub struct GetDevices;
+#[derive(Debug, Clone, Default)]
+pub struct GetDevices {
+    adb: Adb
+}
 
 #[derive(Debug, Clone, PartialEq)]
 pub struct Device {
     id: String,
     status: String,
-}
-
-impl Default for GetDevices {
-    #[inline]
-    fn default() -> Self {
-        GetDevices {}
-    }
 }
 
 impl GetDevices {
@@ -22,8 +18,8 @@ impl GetDevices {
     }
 
     pub fn invoke(&self) -> Vec<Device> {
-        let adb = Adb::new();
-        let output: std::process::Output = adb.devices();
+        debug!("GetDevices invoke() called.");
+        let output: std::process::Output = self.clone().adb.devices();
 
         if output.status.success() {
             let stdout = String::from_utf8_lossy(&output.stdout);
@@ -53,10 +49,10 @@ impl GetDevices {
 
 impl Device {
     pub fn id(&self) -> String {
-        self.id.to_owned()
+        self.id.clone()
     }
 
     pub fn status(&self) -> String {
-        self.status.to_owned()
+        self.status.clone()
     }
 }

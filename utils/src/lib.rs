@@ -1,4 +1,15 @@
-use std::string::String;
+mod mapper;
+pub(crate) mod innerlude{
+    pub use crate::mapper::*;
+}
+
+pub mod prelude {
+    pub use crate::innerlude::{
+        Mapper
+    };
+}
+pub use macros;
+
 
 pub fn capitalize(input: &String) -> String {
     let mut chars = input.chars();

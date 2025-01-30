@@ -1,0 +1,12 @@
+[package]
+name = "macros"
+version = "0.1.0"
+edition = "2021"
+
+[lib]
+proc-macro = true
+
+[dependencies]
+quote = "1.0"  # Rust 코드 생성용 (macro expansion)
+syn = { version = "2.0", features = ["derive"] }  # Rust 코드 파싱용
+proc-macro2 = "1.0"  # 저수준 토큰 스트림 API

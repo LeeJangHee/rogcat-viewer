@@ -1,15 +1,19 @@
-use std::process::{Command, Output};
+use std::process::{Child, Command, Output, Stdio};
+use tracing::{debug, info};
+use utils::macros::StructName;
 
-#[derive(Debug)]
+#[derive(Debug, Clone, StructName)]
 pub struct Adb {
-    cmd: Command,
+    exec_cmd: String,
+    device: Option<String>,
 }
 
 impl Default for Adb {
     #[inline]
     fn default() -> Self {
         Adb {
-            cmd: Command::new("adb"),
+            exec_cmd: String::from("adb"),
+            device: None,
         }
     }
 }
@@ -19,10 +23,38 @@ impl Adb {
         Default::default()
     }
 
-    pub fn devices(mut self) -> Output {
-        self.cmd
+    pub fn devices(self) -> Output {
+        debug!("[{}] devices called.", self.simple_name());
+        Command::new(self.exec_cmd)
             .arg("devices")
             .output()
-            .expect("Faild to execute `adb device` command.")
+            .expect("Failed to execute `adb device` command.")
+    }
+
+    pub fn logcat(self) -> Child {
+        info!("[{}] logcat called.", self.simple_name());
+        let mut args = vec!["logcat", "-v", "threadtime"];
+        if let Some(d) = &self.device {
+            args.push("-s");
+            args.push(d.as_str());
+        }
+        Command::new(self.exec_cmd)
+            .args(args)
+            .stdout(Stdio::piped())
+            .spawn()
+            .expect("Failed to execute `adb logcat -v threadtime` command.")
+    }
+
+    pub fn set_device(&mut self, device: String) {
+        debug!(
+            "[{}] set_device called with {}.",
+            self.simple_name(),
+            &device
+        );
+        self.device = if !device.is_empty() {
+            Some(device)
+        } else {
+            None
+        };
     }
 }

@@ -6,7 +6,7 @@ use rogcat_viewer::ui::{
 };
 use utils::map_to;
 
-const BULMA_CSS: Asset = asset!("/assets/bulma/bulma.css");
+const BULMA_CSS: Asset = asset!("/assets/bulma/bulma.min.css");
 
 fn main() {
     dioxus::LaunchBuilder::desktop()
