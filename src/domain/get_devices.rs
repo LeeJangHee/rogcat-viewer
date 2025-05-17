@@ -1,9 +1,9 @@
-use data::command::adb::Adb;
+use crate::data::adb::Adb;
 use tracing::{debug, info};
 
 #[derive(Debug, Clone, Default)]
 pub struct GetDevices {
-    adb: Adb
+    adb: Adb,
 }
 
 #[derive(Debug, Clone, PartialEq)]

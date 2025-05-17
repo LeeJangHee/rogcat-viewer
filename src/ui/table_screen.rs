@@ -1,3 +1,4 @@
+#![allow(non_snake_case)]
 use dioxus::prelude::*;
 use tracing::{debug, info};
 
@@ -6,38 +7,46 @@ pub fn TableScreen() -> Element {
     info!("TableScreen is called.");
     rsx! {
         div {
-            table {
-                thead {
-                    tr {
-                        td { "line" }
-                        td { "date" }
-                        td { "time" }
-                        td { "log-level" }
-                        td { "pid" }
-                        td { "thread" }
-                        td { "tag" }
-                        td { "message" }
-                    }
-                }
+            table { width: "100%", table_layout: "fixed",
+                TitleScreen {}
+                Contents {}
             }
         }
     }
 }
 
-fn title_screen() -> Element {
+fn TitleScreen() -> Element {
     info!("TableTitleScreen is called.");
     rsx! {
         thead {
+            tr {
+                th { "line" }
+                th { "date" }
+                th { "time" }
+                th { "log-level" }
+                th { "pid" }
+                th { "thread" }
+                th { "tag" }
+                th { "message" }
+            }
         }
     }
 }
 
-fn contents() -> Element {
+fn Contents() -> Element {
     info!("Contents is called.");
     rsx! {
         tbody {
+            tr {
+                td { "line" }
+                td { "date" }
+                td { "time" }
+                td { "log-level" }
+                td { "pid" }
+                td { "thread" }
+                td { "tag" }
+                td { "message" }
+            }
         }
     }
 }
-
-// table column

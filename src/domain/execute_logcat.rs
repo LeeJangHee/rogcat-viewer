@@ -1,6 +1,6 @@
+use crate::data::adb::Adb;
 use std::io::{BufRead, BufReader};
 use tracing::debug;
-use data::command::adb::Adb;
 
 #[derive(Debug, Clone, Default)]
 pub struct ExecuteLogcat {
@@ -28,7 +28,7 @@ impl ExecuteLogcat {
                 Err(e) => {
                     eprintln!("logcat error: {e}");
                     break;
-                },
+                }
             }
         }
     }

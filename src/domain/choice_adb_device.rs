@@ -1,10 +1,9 @@
-use data::command::adb::Adb;
+use crate::data::adb::Adb;
 use tracing::debug;
-
 
 #[derive(Debug, Clone, Default)]
 pub struct ChoiceAdbDevice {
-    adb: Adb
+    adb: Adb,
 }
 
 impl ChoiceAdbDevice {

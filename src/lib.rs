@@ -5,3 +5,13 @@ pub mod ui {
     pub mod input_fileter_screen;
     pub mod table_screen;
 }
+
+pub mod data {
+    pub mod adb;
+}
+
+pub mod domain {
+    pub mod choice_adb_device;
+    pub mod execute_logcat;
+    pub mod get_devices;
+}
